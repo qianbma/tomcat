@@ -15,11 +15,11 @@ public class Response {
     }
 
     public void writeHtml(String path) throws IOException {
-        String resourcePath= FileUtil.getResourcePath(path);
+        String resourcePath = FileUtil.getResourcePath(path);
         File file = new File(resourcePath);
-        if(file.exists()){
-            FileUtil.writeFile(file,outputStream);
-        }else{
+        if (file.exists()) {
+            FileUtil.writeFile(file, outputStream);
+        } else {
             write(HttpUtil.getHttpResponseContext404());
         }
     }

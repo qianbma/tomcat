@@ -10,18 +10,18 @@ public class Request {
     public Request(InputStream inputStream) throws Exception {
         this.inputStream = inputStream;
         int count = 0;
-        while(count==0){
-            count= inputStream.available();// 请求信息不是一次发送完成，inputStream.available用来用来预估网络的长度
+        while (count == 0) {
+            count = inputStream.available();// 请求信息不是一次发送完成，inputStream.available用来用来预估网络的长度
         }
-        byte [] bytes = new byte[count];
+        byte[] bytes = new byte[count];
         inputStream.read(bytes);
         extractFild(new String(bytes));
     }
 
-    private void extractFild(String content){
-        if("".equals(content)){
+    private void extractFild(String content) {
+        if ("".equals(content)) {
             System.out.println("empyt");
-        }else {
+        } else {
             String firstLine = content.split("\\n")[0];
             String[] split = firstLine.split("\\s");
             setMethod(split[0]);
